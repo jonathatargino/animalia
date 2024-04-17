@@ -1,4 +1,6 @@
 ---
+import Header from "../components/Header.astro"
+import "@fontsource/sora"
 ---
 
 <html>
@@ -9,6 +11,15 @@
 		<meta name="generator" content={Astro.generator} />
 	</head>
 	<main>
-		<h1>Olá Mundo!</h1>
+		<Header />
 	</main>
 </html>
+
+<style is:global>
+	* {
+		padding: 0;
+		margin: 0;
+		box-sizing: border-box;
+		font-family: "Sora";
+	}
+</style>
