@@ -1,0 +1,38 @@
+---
+interface Props {
+  id: string;
+  slug: string;
+  body: string;
+  collection: string;
+  data: {
+      title: string;
+      pubDate: Date;
+      description: string;
+      author: string;
+      image: {
+          url: string;
+          alt: string;
+      };
+      tags: string[];
+  }
+}
+
+const props = Astro.props
+---
+
+<div class="container">
+  <img src={props.data.image.url} alt={props.data.image.alt} height={250} width={400}/>
+  <h2>{props.data.title}</h2>
+</div>
+
+
+<style>
+  img {
+    border-radius: 40px
+  }
+
+  h2 {
+    font-size: 20px;
+    margin-top: 8px;
+  }
+</style>

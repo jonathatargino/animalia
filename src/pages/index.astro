@@ -1,6 +1,9 @@
 ---
 import Header from "../components/Header.astro"
+import PostCard from "../components/PostCard.astro";
 import "@fontsource/sora"
+import { getCollection } from "astro:content";
+const posts = await getCollection("posts")
 ---
 
 <html>
@@ -10,8 +13,13 @@ import "@fontsource/sora"
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
 	</head>
+	<Header />
 	<main>
-		<Header />
+		<div class="post-grid">
+			{posts.map((post) => (
+				<PostCard {...post} />
+			))}
+		</div>
 	</main>
 </html>
 
@@ -21,5 +29,19 @@ import "@fontsource/sora"
 		margin: 0;
 		box-sizing: border-box;
 		font-family: "Sora";
+	}
+
+	main {
+		padding-left: 120px;
+		padding-right: 120px;
+		padding-top: 40px;
+		padding-bottom: 120px;
+	}
+
+	.post-grid {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		justify-items: center;
+		gap: 32px
 	}
 </style>
